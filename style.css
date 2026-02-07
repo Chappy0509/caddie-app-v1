@@ -1,0 +1,112 @@
+/* Reset default browser spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f9d58, #0b6e3f);
+  color: white;
+}
+
+.button_row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Center everything */
+.screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 25px;
+  background-color: white;
+  color: #0f9d58;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.97);
+  background-color: #0f9d58;
+}
+
+.change-color {
+  background-color: rgb(177, 177, 177); 
+  color: black
+}
+
+input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 300px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0f9d58;
+  box-shadow: 0 0 5px #0f9d58;
+}
+
+.map {
+  width: 100%;
+  height: 500px;
+  background: lightgreen;
+  position: relative;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 100;
+}
+
+.shot-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+}
+
