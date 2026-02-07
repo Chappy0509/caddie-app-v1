@@ -239,7 +239,7 @@ function populateBag() {
 // Open popup when clicking on map
 map.addEventListener('click', (e) => {
   clickX = 150;
-  clickY = 400;
+  clickY = 0;
   populateBag();
   popup.style.display = 'block';
 });
