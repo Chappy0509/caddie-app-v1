@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>AI Caddie</title>
+
+  <!-- Chrome / Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0f9d58">
+
+  <!-- iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+  <div id="welcome_screen" class="screen">
+    <h1>AI Caddie</h1>
+    <p>Your smart golf companion</p>
+
+    <button id="start_btn">Get Started</button>
+  </div>
+
+  <div id="second_screen" class="screen">
+    <h1> Welcome in! </h1>
+    <p> We will now make your bag</p>
+
+    <div id="club_row" class=".button_row">
+      <button id="woods_btn">Woods</button> <button id="irons_btn">Irons</button> <button id="wedges_btn">Wedges</button>
+    </div>
+    
+    <div id="woods_row" class=".button_row">
+      <button id="driver_btn">Driver</button> <button id="3w_btn">3w</button> <button id="5w_btn">5w</button>
+    </div>
+    <div id="irons_row_1" class=".button_row">
+      <button id="4h_btn">4h</button> <button id="5h_btn">5h</button> <button id="3i_btn">3i</button>
+    </div>
+    <div id="irons_row_2" class=".button_row">
+      <button id="4i_btn">4i</button> <button id="5i_btn">5i</button> <button id="6i_btn">6i</button>
+    </div>
+    <div id="irons_row_3" class=".button_row">
+      <button id="7i_btn">7i</button> <button id="8i_btn">8i</button> <button id="9i_btn">9i</button>
+    </div>
+    <div id="wedges_row_1" class=".button_row">
+      <button id="P_btn">P</button> <button id="A_btn">A</button> <button id="G_btn">G</button>
+    </div>
+    <div id="wedges_row_2" class=".button_row">
+      <button id="S_btn">S</button> <button id="L_btn">L</button>
+    </div>
+
+    <button id="correct_club_btn">Submit</button>
+
+
+
+  </div>
+  <!-- Link JS -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
