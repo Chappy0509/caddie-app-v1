@@ -78,6 +78,7 @@ input:focus {
 }
 
 .map {
+  position:relative;
   width: 100%;
   height: 500px;
   background: lightgreen;
@@ -99,14 +100,21 @@ input:focus {
 
 .shot-dot {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background: red;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 12px;
+  left: 50%;
+  bottom: 0;
+
+  width: 28px;
+  height: 28px;
+  background: white;
   color: black;
+  border-radius: 50%;
+  font-size: 10px;
   font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateX(-50%);
 }
 

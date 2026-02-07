@@ -238,7 +238,6 @@ function populateBag() {
 
 // Open popup when clicking on map
 map.addEventListener('click', (e) => {
-  clickX = 150;
   clickY = 0;
   populateBag();
   popup.style.display = 'block';
@@ -251,22 +250,18 @@ close_popup_btn.addEventListener('click', () => {
 });
 
 // Submit shot
-submit_shot_btn.addEventListener('click', () => {
-  const distance = distance_input.value;
-  if (!selectedClub || !distance) {
-    alert("Select a club and enter a distance!");
-    return;
-  }
+submit_shot_btn.addEventListener("click", () => {
+  const distance = Number(distance_input.value);
+  if (!selectedClub || !distance) return;
 
-  // Create a dot
-  const dot = document.createElement('div');
-  dot.classList.add('shot-dot');
-  dot.style.left = `${clickX}px`;
-  dot.style.top = `${clickY - distance}px`; // distance could scale to pixels
+  const dot = document.createElement("div");
+  dot.className = "shot-dot";
   dot.textContent = selectedClub.toUpperCase();
+
+  const SCALE = 1; // pixels per yard
+  dot.style.bottom = `${distance * SCALE}px`;
+
   map.appendChild(dot);
 
-  popup.style.display = 'none';
-  distance_input.value = '';
-  selectedClub = null;
+  popup.style.display = "none";
 });
