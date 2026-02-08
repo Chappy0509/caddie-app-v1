@@ -41,6 +41,7 @@ p {
 }
 
 button {
+  margin-bottom: 30px;
   padding: 15px 30px;
   font-size: 1.1rem;
   border: none;
@@ -139,31 +140,33 @@ body {
   text-align: center;
 }
 
-/* Bottom nav */
 #bottom_nav {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 80px;
-
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
 
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* center the buttons horizontally */
   align-items: center;
+  gap: 30px; /* space between buttons */
 }
 
-/* Icon buttons */
 .nav-btn {
   background: none;
   border: none;
-  font-size: 20px;
-  font-variant-position: normal;
+  font-size: 28px;
   color: white;
+
+  display: flex;       /* make the button a flex container */
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  width: 60px;          /* optional: make buttons square */
+  height: 60px;
   cursor: pointer;
-  width: 20px;
 }
 
 .nav-btn:active {
