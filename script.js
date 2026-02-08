@@ -36,6 +36,9 @@ const bag_buttons_div = document.getElementById("bag_buttons");
 const distance_input = document.getElementById("distance_input");
 const submit_shot_btn = document.getElementById("submit_shot");
 const close_popup_btn = document.getElementById("close_popup");
+const confirm_distances = document.getElementById("confirm_distances")
+const home_screen = document.getElementById("home_screen")
+const distance_screen = document.getElementById("distance_screen")
 
 
 let bag ={
@@ -82,6 +85,7 @@ function restore_buttons() {
 
 
 second_screen.style.display = "none";
+distance_screen.style.display = "none";
 woods_row.style.display = "none"
 irons_row_1.style.display ="none"
 irons_row_2.style.display ="none"
@@ -89,7 +93,7 @@ irons_row_3.style.display ="none"
 wedges_row_1.style.display ="none"
 wedges_row_2.style.display ="none"
 go_back_btn.style.display="none"
-
+home_screen.style.display="none"
 
 start_btn.addEventListener("click", () => {
   welcome_screen.style.display = "none";
@@ -258,10 +262,16 @@ submit_shot_btn.addEventListener("click", () => {
   dot.className = "shot-dot";
   dot.textContent = selectedClub.toUpperCase();
 
-  const SCALE = 1; // pixels per yard
+  const SCALE = 1.5; // pixels per yard
   dot.style.bottom = `${distance * SCALE}px`;
 
   map.appendChild(dot);
 
   popup.style.display = "none";
 });
+
+confirm_distances.addEventListener("click", () => {
+    distance_screen.style.display="none";
+    home_screen.style.display="flex";
+});
+
