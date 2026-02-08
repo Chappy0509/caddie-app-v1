@@ -118,3 +118,52 @@ input:focus {
   transform: translateX(-50%);
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #0f9d58, #0b6e3f);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Main content */
+#home_screen {
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Bottom nav */
+#bottom_nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Icon buttons */
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-btn:active {
+  transform: scale(0.9);
+}
