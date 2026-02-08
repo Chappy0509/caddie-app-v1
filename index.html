@@ -30,41 +30,34 @@
 
 <body>
 
-  <div id="welcome_screen" class="screen">
-    <h1>AI Caddie</h1>
-    <p>Your smart golf companion</p>
 
-    <button id="start_btn">Get Started</button>
-  </div>
-
-  <div id="second_screen" class="screen">
+  <div id="clubs_screen" class="screen">
     <h1> Welcome in! </h1>
     <p> We will now make your bag</p>
 
-    <div id="club_row" class=".button_row">
+    <div id="club_row" class="button_row">
       <button id="woods_btn">Woods</button> <button id="irons_btn">Irons</button> <button id="wedges_btn">Wedges</button>
     </div>
     
-    <div id="woods_row" class=".button_row">
+    <div id="woods_row" class="button_row">
       <button id="driver_btn">Driver</button> <button id="w3_btn">3w</button> <button id="w5_btn">5w</button>
     </div>
-    <div id="irons_row_1" class=".button_row">
+    <div id="irons_row_1" class="button_row">
       <button id="h4_btn">4h</button> <button id="h5_btn">5h</button> <button id="i3_btn">3i</button>
     </div>
-    <div id="irons_row_2" class=".button_row">
+    <div id="irons_row_2" class="button_row">
       <button id="i4_btn">4i</button> <button id="i5_btn">5i</button> <button id="i6_btn">6i</button>
     </div>
-    <div id="irons_row_3" class=".button_row">
+    <div id="irons_row_3" class="button_row">
       <button id="i7_btn">7i</button> <button id="i8_btn">8i</button> <button id="i9_btn">9i</button>
     </div>
-    <div id="wedges_row_1" class=".button_row">
+    <div id="wedges_row_1" class="button_row">
       <button id="p_btn">P</button> <button id="a_btn">A</button> <button id="g_btn">G</button>
     </div>
-    <div id="wedges_row_2" class=".button_row">
+    <div id="wedges_row_2" class="button_row">
       <button id="s_btn">S</button> <button id="l_btn">L</button>
     </div>
 
-    <button id="correct_club_btn">Submit</button>
     <button id="go_back_btn">Back</button>
 
 
@@ -72,7 +65,7 @@
   </div>
   <div id="distance_screen" class="screen">
     <div id="map" class="map"></div>
-    <button id="confirm_distances">Confirm Distances</button>
+
 <!-- Popup modal -->
     <div id="popup" class="popup">
       <h2>Select Club & Enter Distance</h2>
@@ -89,18 +82,19 @@
   </div>
 
   <nav id="bottom_nav">
-    <button class="nav-btn">🏠</button>
-    <button class="nav-btn">⛳</button>
-    <button class="nav-btn">📍</button>
-    <button class="nav-btn">📊</button>
-    <button class="nav-btn">⚙️</button>
+    <button id="home_btn" class="nav-btn">🏠</button>
+    <button id="golf_btn"class="nav-btn">⛳</button>
+    <button id="distances_btn" class="nav-btn">📍</button>
+    <button id="data_btn" class="nav-btn">📊</button>
+    <button id="settings_btn" class="nav-btn">⚙️</button>
   </nav>
-  </div>
-
+  <div id="settings_screen" class="screen">
+      <button id="clubs_btn">Clubs</button>
+    </div>
   <!-- Link JS -->
   <script src="script.js"></script>
 
-
+  
 </body>
 
 </html>
