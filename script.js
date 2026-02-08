@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const SCALE = 1.5; // pixels per yard for shot dots
     const start_btn = document.getElementById("start_btn");
     const clubs_screen = document.getElementById("clubs_screen");
     const go_back_btn = document.getElementById("go_back_btn")
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const clubs_btn = document.getElementById("clubs_btn")
     const settings_screen = document.getElementById("settings_screen")
 
+    let shots = []; 
 
     let bag ={
         woods:[],
@@ -216,56 +218,109 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Populate bag buttons dynamically
     function populateBag() {
-    bag_buttons_div.innerHTML = '';
-    Object.keys(bag).forEach(category => {
-        bag[category].forEach(club => {
-        const btn = document.createElement('button');
-        btn.textContent = club.toUpperCase();
-        btn.addEventListener('click', () => {
-            selectedClub = club;
-            Array.from(bag_buttons_div.children).forEach(b => b.classList.remove('change-color'));
-            btn.classList.add('change-color');
+        bag_buttons_div.innerHTML = '';
+        Object.keys(bag).forEach(category => {
+            bag[category].forEach(club => {
+            const btn = document.createElement('button');
+            btn.textContent = club.toUpperCase();
+            btn.addEventListener('click', () => {
+                selectedClub = club;
+                Array.from(bag_buttons_div.children).forEach(b => b.classList.remove('change-color'));
+                btn.classList.add('change-color');
+            });
+            bag_buttons_div.appendChild(btn);
+            });
         });
-        bag_buttons_div.appendChild(btn);
-        });
-    });
-    }
+        }
 
-    // Open popup when clicking on map
-    map.addEventListener('click', (e) => {
-    clickY = 0;
-    populateBag();
-    popup.style.display = 'block';
+        // Open popup when clicking on map
+        map.addEventListener('click', (e) => {
+        clickY = 0;
+        populateBag();
+        popup.style.display = 'block';
     });
 
     // Close popup
     close_popup_btn.addEventListener('click', () => {
-    popup.style.display = 'none';
-    selectedClub = null;
+        popup.style.display = 'none';
+        selectedClub = null;
     });
-
-    // Submit shot
-    submit_shot_btn.addEventListener("click", () => {
-    const distance = Number(distance_input.value);
-    if (!selectedClub || !distance) return;
     function getRandomColor() {
         const r = Math.floor(Math.random() * 256); // 0-255
         const g = Math.floor(Math.random() * 256); // 0-255
         const b = Math.floor(Math.random() * 256); // 0-255
         return `rgb(${r}, ${g}, ${b})`;
+    } 
+    function save_shots() {
+        localStorage.setItem("my_shots", JSON.stringify(shots));
     }
-    const dot = document.createElement("div");
-    dot.className = "shot-dot";
-    dot.style.backgroundColor=getRandomColor();
-    dot.textContent = selectedClub.toUpperCase();
 
-    const SCALE = 1.5; // pixels per yard
-    dot.style.bottom = `${distance * SCALE}px`;
+    function restore_shots() {
+        const saved = localStorage.getItem("my_shots");
+        if (!saved) return;
+        shots = JSON.parse(saved);
 
-    map.appendChild(dot);
+        shots.forEach(shot => {
+            const dot = document.createElement("div");
+            dot.className = "shot-dot";
+            dot.textContent = shot.club.toUpperCase();
+            dot.style.bottom = `${shot.distance * SCALE}px`;
 
-    popup.style.display = "none";
+            // click to edit
+            dot.addEventListener("click", () => {
+                distance_input.value = shot.distance;
+                selectedClub = shot.club;
+                popup.style.display = "block";
+
+                // remove dot and shot from array
+                dot.remove();
+                shots = shots.filter(s => s !== shot);
+                save_shots();
+            });
+
+            map.appendChild(dot);
+        });
+    }
+
+// restore shots on page load
+window.addEventListener("load", () => {
+    restore_shots();
+});
+
+    // Submit shot
+    submit_shot_btn.addEventListener("click", () => {
+        const distance = Number(distance_input.value);
+        if (!selectedClub || !distance) return;
+
+        const dot = document.createElement("div");
+        dot.className = "shot-dot";
+        dot.style.backgroundColor=getRandomColor();
+        dot.textContent = selectedClub.toUpperCase();
+        dot.style.bottom = `${distance * SCALE}px`;
+
+        // store shot in array
+        const shotData = { club: selectedClub, distance };
+        shots.push(shotData);
+        save_shots(); // save to localStorage
+
+        // attach click event to edit
+        dot.addEventListener("click", () => {
+            distance_input.value = shotData.distance;
+            selectedClub = shotData.club;
+            popup.style.display = "block";
+
+            // remove old dot after editing
+            dot.remove();
+
+            // remove shot from array, will re-add when submitted
+            shots = shots.filter(s => s !== shotData);
+            save_shots();
+        });
+
+        map.appendChild(dot);
+        popup.style.display = "none";
     });
+
 
 
 
