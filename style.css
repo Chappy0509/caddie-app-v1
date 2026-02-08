@@ -1,4 +1,4 @@
-/* Reset default browser spacing */
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,29 +6,30 @@
   font-family: Arial, sans-serif;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* prevents scrolling */
+}
+
 body {
-  height: 100vh;
   background: linear-gradient(135deg, #0f9d58, #0b6e3f);
   color: white;
 }
 
-.button_row {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-/* Center everything */
+/* All screens take full height minus nav bar */
 .screen {
-  height: 100%;
-  display: flex;
+  display: none;          /* hidden by default */
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
+  height: calc(100vh - 80px); /* full viewport minus bottom nav */
+  width: 100%;
   padding: 20px;
+  overflow: hidden;      /* no scrolling inside screen */
 }
 
+/* Header text */
 h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
@@ -36,13 +37,13 @@ h1 {
 
 p {
   font-size: 1.1rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   opacity: 0.9;
 }
 
+/* Buttons */
 button {
-  margin-bottom: 30px;
-  padding: 15px 30px;
+  padding: 12px 25px;
   font-size: 1.1rem;
   border: none;
   border-radius: 25px;
@@ -58,16 +59,17 @@ button:active {
 }
 
 .change-color {
-  background-color: rgb(177, 177, 177); 
-  color: black
+  background-color: rgb(177, 177, 177);
+  color: black;
 }
 
+/* Inputs */
 input {
   padding: 12px 15px;
   font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #ccc;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   width: 80%;
   max-width: 300px;
 }
@@ -78,32 +80,28 @@ input:focus {
   box-shadow: 0 0 5px #0f9d58;
 }
 
-.map {
-  position:relative;
+/* Button rows */
+.button_row {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+/* Map container must fill screen area */
+.map, #golf_map {
   width: 100%;
-  height: 500px;
+  flex: 1;          /* take all remaining vertical space */
   background: lightgreen;
-  position: relative;
-}
-
-.popup {
-  display: none;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  color: black;
-  padding: 20px;
   border-radius: 10px;
-  z-index: 100;
 }
 
+/* Shot dots */
 .shot-dot {
   position: absolute;
   left: 50%;
   bottom: 0;
-
   width: 28px;
   height: 28px;
   background: white;
@@ -111,35 +109,27 @@ input:focus {
   border-radius: 50%;
   font-size: 10px;
   font-weight: bold;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transform: translateX(-50%);
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
+/* Popups */
+.popup, #golf_popup {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 1000;
 }
 
-body {
-  background: linear-gradient(135deg, #0f9d58, #0b6e3f);
-  color: white;
-  font-family: Arial, sans-serif;
-}
-
-/* Main content */
-#home_screen {
-  height: calc(100vh - 80px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
+/* Bottom navigation */
 #bottom_nav {
   position: fixed;
   bottom: 0;
@@ -148,11 +138,10 @@ body {
   height: 80px;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-
   display: flex;
-  justify-content: center; /* center the buttons horizontally */
+  justify-content: center;
   align-items: center;
-  gap: 30px; /* space between buttons */
+  gap: 30px;
 }
 
 .nav-btn {
@@ -160,11 +149,10 @@ body {
   border: none;
   font-size: 28px;
   color: white;
-
-  display: flex;       /* make the button a flex container */
-  justify-content: center; /* center horizontally */
-  align-items: center;     /* center vertically */
-  width: 60px;          /* optional: make buttons square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
   height: 60px;
   cursor: pointer;
 }
