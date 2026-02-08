@@ -91,7 +91,26 @@
   </nav>
   <div id="settings_screen" class="screen">
       <button id="clubs_btn">Clubs</button>
+  </div>
+
+  <div id="golf_screen" class="screen">
+    <h2>Golf Course GPS Tracker</h2>
+    <div id="golf_map" style="height: 500px;"></div>
+    <p>Click anywhere to record a shot. Select club in popup.</p>
+
+    <!-- Popup modal -->
+    <div id="golf_popup" class="popup">
+      <h2>Select Club & Note</h2>
+      <div id="golf_bag_buttons"></div>
+      <input type="text" id="shot_note_input" placeholder="Optional note">
+      <button id="golf_submit_shot">Submit Shot</button>
+      <button id="golf_close_popup">Close</button>
     </div>
+  </div>
+  <div id="map" style="height: 500px;"></div>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <!-- Link JS -->
   <script src="script.js"></script>
 
